@@ -1,23 +1,18 @@
-def test_logo(app):
-    app.open_main_page()
-    assert len(app.driver.find_elements_by_css_selector("#logo .img-responsive")) == 1
+import pytest
 
 
-def test_basket(app):
-    app.open_main_page()
-    assert len(app.driver.find_elements_by_id("cart-total")) == 1
+def test_main_page_elements(app):
+    main_page = app.open_main_page()
+    main_page.assert_element(main_page._MAIN_NAV_BAR)
+    main_page.assert_element(main_page._SEARCH_FIELD)
+    main_page.assert_element(main_page._MENU)
+    main_page.assert_element(main_page._CART_BUTTON)
+    main_page.assert_element(main_page._MAIN_SLIDER)
 
 
-def test_slide_show(app):
-    app.open_main_page()
-    assert len(app.driver.find_elements_by_css_selector(".swiper-slide-active > a > .img-responsive")) == 1
-
-
-def test_swiper_carouse(app):
-    app.open_main_page()
-    assert len(app.driver.find_elements_by_css_selector("#carousel0 > .swiper-wrapper")) == 1
-
-
-def test_product(app):
-    app.open_main_page()
-    assert len(app.driver.find_elements_by_css_selector(".product-layout:nth-child(1) .img-responsive")) == 1
+@pytest.mark.parametrize("currency, currency_label", [("EUR", "€"), ("GBP", "£"), ("USD", "$")])
+def test_switch_currency_from_main_nav(app, currency, currency_label):
+    main_page = app.open_main_page()
+    main_page.switch_currency_in_main_nav(to=currency)
+    currency_text = main_page.get_currency_text_from_main_nav()
+    assert currency_text == f"{currency_label}  "
