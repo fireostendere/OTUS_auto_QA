@@ -1,6 +1,10 @@
 from time import time
+import allure
 
 
+@allure.feature('User auth page')
+@allure.story('Validation')
+@allure.title('Validation of page elements')
 def test_user_auth_page_elements(app):
     user_auth_page = app.open_user_auth_page()
     user_auth_page.assert_element(user_auth_page._MAIN_NAV_BAR)
@@ -10,6 +14,9 @@ def test_user_auth_page_elements(app):
     user_auth_page.assert_element(user_auth_page._AGREE_CHECKBOX)
 
 
+@allure.feature('User auth page')
+@allure.story('Registration')
+@allure.title('Correct user registration')
 def test_user_registration(app):
     user_auth_page = app.open_user_auth_page()
     uniq = int(time())

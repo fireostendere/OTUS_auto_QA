@@ -1,8 +1,12 @@
 from time import time
 from application.pages.admin_main_page import AdminMainPage
 from application.pages.admin_products_page import AdminProductsPage
+import allure
 
 
+@allure.feature('Admin auth page')
+@allure.story('Validation')
+@allure.title('Validation of page elements')
 def test_admin_page_elements(app):
     admin_page = app.open_admin_page()
     admin_page.assert_element(admin_page._LOGO)
@@ -12,6 +16,9 @@ def test_admin_page_elements(app):
     admin_page.assert_element(admin_page._LOGIN_BUTTON)
 
 
+@allure.feature('Admin panel')
+@allure.story('Products')
+@allure.title('Add product')
 def test_add_new_product_from_admin(app):
     admin_user = {"login": "user", "password": "bitnami"}
     uniq = int(time())
@@ -29,6 +36,9 @@ def test_add_new_product_from_admin(app):
     assert admin_products_page.is_product_in_list(product["name"])
 
 
+@allure.feature('Admin panel')
+@allure.story('Products')
+@allure.title('Remove product')
 def test_remove_product_from_admin(app):
     admin_user = {"login": "user", "password": "bitnami"}
     admin_auth_page = app.open_admin_page()
