@@ -1,3 +1,9 @@
+import allure
+
+
+@allure.feature('Product page')
+@allure.story('Validation')
+@allure.title('Validation of page elements')
 def test_product_page_elements(app):
     product_page = app.open_product_page()
     product_page.assert_element(product_page._PRODUCT_TITLE)

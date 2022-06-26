@@ -1,3 +1,9 @@
+import allure
+
+
+@allure.feature('Catalog page')
+@allure.story('Validation')
+@allure.title('Validation of page elements')
 def test_catalog_page_elements(app):
     catalog_page = app.open_catalog_page()
     catalog_page.assert_element(catalog_page._BREADCRUMB)
