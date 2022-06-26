@@ -1,0 +1,7 @@
+Пользователей системы: root, _rpc, systemd+, avahi, message+, syslog, www-data, mysql, user, rtkit, whoopsie, kernoops, openfire, colord, lp;
+Процессов запущено: 504;
+Пользовательских процессов: root: 314, _rpc: 1, systemd+: 2, avahi: 2, message+: 1, syslog: 1, www-data: 8, mysql: 1, user: 167, rtkit: 1, whoopsie: 1, kernoops: 2, openfire: 1, colord: 1, lp: 1;
+Всего памяти используется: 88.9;
+Всего CPU используется: 20.1;
+Больше всего памяти использует:  /snap/pycharm-educa: 11.4;
+Больше всего CPU использует: /usr/lib/packagekit/: 7.5
