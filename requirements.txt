@@ -3,4 +3,3 @@ requests
 selenium
 allure-pytest
 pytest-xdist
-pandas
