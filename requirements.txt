@@ -3,3 +3,4 @@ requests
 selenium
 allure-pytest
 pytest-xdist
+lxml
