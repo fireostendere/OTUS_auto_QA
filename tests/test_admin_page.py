@@ -1,4 +1,5 @@
 from time import time
+from time import sleep
 from application.pages.admin_main_page import AdminMainPage
 from application.pages.admin_products_page import AdminProductsPage
 import allure

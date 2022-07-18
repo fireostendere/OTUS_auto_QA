@@ -1,6 +1,5 @@
 import allure
 
-
 @allure.feature('Catalog page')
 @allure.story('Validation')
 @allure.title('Validation of page elements')

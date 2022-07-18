@@ -60,7 +60,7 @@ class AdminProductsPage(BasePage):
     @allure.step("Click checkbox on product")
     def mark_product_checked(self, product_row):
         self.logger.info(f"{self.logger.name}: Click checkbox on product")
-        product_row.find_element(*self._CHECKBOX_IN_RODUCT_ROW).click()
+        product_row.find_element(*self._CHECKBOX_IN_PRODUCT_ROW).click()
         return self
 
     @allure.step("Click Delete button")
