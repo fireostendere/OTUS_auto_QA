@@ -29,5 +29,5 @@ def test_user_registration(app):
                   .fill_password_confirm("qwerty")\
                   .fill_agree_with_privacy_checkbox()\
                   .submit_continue_button()
-    assert user_auth_page.driver.current_url == app.base_url + "/index.php?route=account/success"
+    assert user_auth_page.driver.current_url == app.base_url + "index.php?route=account/success"
     assert user_auth_page.get_content_title_text() == "Your Account Has Been Created!"
