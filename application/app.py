@@ -3,6 +3,7 @@ from application.pages.catalog_page import CatalogPage
 from application.pages.main_page import MainPage
 from application.pages.product_page import ProductPage
 from application.pages.user_auth_page import UserAuthPage
+from selenium.common.exceptions import NoAlertPresentException
 import logging
 import allure
 
@@ -60,8 +61,14 @@ class App:
     def open_user_auth_page(self):
         self.logger.info(f"{self.logger.name}: Opening url: {self.base_url}/index.php?route=account/register")
         self.driver.get(self.base_url + "/index.php?route=account/register")
-        alert_obj = self.driver.switch_to.alert
-        alert_obj.accept()
+        try:
+            self.driver.switch_to.alert
+        except NoAlertPresentException:
+            pass
+        else:
+            alert_obj = self.driver.switch_to.alert
+            alert_obj.accept()
+
         if not self.user_auth_page:
             self.user_auth_page = UserAuthPage(self)
         return self.user_auth_page
