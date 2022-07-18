@@ -17,11 +17,9 @@ def test_main_page_elements(app):
 @allure.feature('Main page')
 @allure.story('Validation')
 @allure.title('Currency switcher')
-@pytest.mark.parametrize("currency, currency_label", [("EUR", "€"),
-                                                      ("GBP", "£"),
-                                                      ("USD", "$")])
+@pytest.mark.parametrize("currency, currency_label", [("EUR", "€"), ("GBP", "£"), ("USD", "$")])
 def test_switch_currency_from_main_nav(app, currency, currency_label):
     main_page = app.open_main_page()
     main_page.switch_currency_in_main_nav(to=currency)
     currency_text = main_page.get_currency_text_from_main_nav()
-    assert currency_text == f"{currency_label}  "
+    assert currency_text == f"{currency_label} Currency "

@@ -9,7 +9,7 @@ import os
 
 def pytest_addoption(parser):
     parser.addoption("--browser", action="store", default="chrome")
-    parser.addoption("--url", action="store", default="http://127.0.0.1:8081/")
+    parser.addoption("--url", action="store", default="http://192.168.0.245:8081")
     parser.addoption("--log_level", action="store", default="INFO")
     parser.addoption("--executor", action="store", default="local")
     parser.addoption("--vnc", action="store_true", default=True)
