@@ -13,9 +13,10 @@ def pytest_addoption(parser):
     parser.addoption("--log_level", action="store", default="INFO")
     parser.addoption("--executor", action="store", default="local")
     parser.addoption("--vnc", action="store_true", default=True)
+    parser.addoption("--browserversion", action="store", default="103.0")
 
 
-def driver_factory(browser, executor, vnc):
+def driver_factory(browser, browserversion, executor, vnc):
     if executor == "local":
         if browser == "chrome":
             driver = webdriver.Chrome()
@@ -29,6 +30,7 @@ def driver_factory(browser, executor, vnc):
         executor_url = "http://127.0.0.1:4444/wd/hub"
         caps = {
             "browserName": browser,
+            "browserVersion": browserversion,
             "selenoid:options": {
                 "enableVNC": vnc
             }
@@ -44,9 +46,10 @@ def driver_factory(browser, executor, vnc):
 @pytest.fixture
 def app(request):
     browser = request.config.getoption("--browser")
+    browserversion = request.config.getoption("--browserversion")
     executor = request.config.getoption("--executor")
     vnc = request.config.getoption("--vnc")
-    driver = driver_factory(browser, executor, vnc)
+    driver = driver_factory(browser, browserversion, executor, vnc)
     url = request.config.getoption("--url")
     log_level = request.config.getoption("--log_level")
     logger = logging.getLogger('driver')
